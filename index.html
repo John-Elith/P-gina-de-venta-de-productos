@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Manoz Store</title>
+    
+    <!-- Enlace a la hoja de estilos CSS -->
+    <link rel="stylesheet" href="estilos.css">
+    
+    <!-- Enlace a Google Fonts para fuentes agradables -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Enlace a Font Awesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Encabezado de la página -->
+    <header>
+        <div class="contenedor">
+            <h1><i class="fa-solid fa-store"></i> The Manoz Store</h1>
+            <div class="icono-carrito">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="contador-carrito">0</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="contenedor">
+        
+        <!-- Filtros de búsqueda -->
+        <section class="filtros">
+            <h2>Nuestros Productos</h2>
+            <div class="controles-filtro">
+                <div class="filtro-grupo">
+                    <label for="filtro-categoria">Filtrar por categoría:</label>
+                    <select id="filtro-categoria">
+                        <option value="todos">Todas</option>
+                        <option value="hogar">Hogar</option>
+                        <option value="personal">Personal</option>
+                        <option value="tecnologia">Tecnología</option>
+                        <option value="escolar">Útiles Escolares</option>
+                    </select>
+                </div>
+                <div class="filtro-grupo">
+                    <label for="filtro-precio">Filtrar por precio:</label>
+                    <select id="filtro-precio">
+                        <option value="todos">Cualquier precio</option>
+                        <option value="50000">Menos de $50.000</option>
+                        <option value="200000">Menos de $200.000</option>
+                        <option value="500000">Menos de $500.000</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contenedor para mostrar los productos -->
+        <section id="contenedor-productos" class="grid-productos">
+            <!-- Los productos se insertarán aquí dinámicamente con JavaScript -->
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <div class="contenedor">
+            <h3><i class="fa-solid fa-envelope"></i> Contacto</h3>
+            <p>Para realizar tu pedido o si tienes alguna consulta, contáctanos en:</p>
+            <a href="mailto:ventas@themanozstore.com">John Elith</a>
+        </div>
+    </footer>
+
+    <!-- Ventana Modal para el Carrito de Compras -->
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal" id="cerrar-carrito">&times;</span>
+            <h2><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h2>
+            <div id="items-carrito">
+                <!-- Items del carrito se insertarán aquí -->
+            </div>
+            <hr>
+            <div class="total-carrito">
+                <p>Total:</p>
+                <p id="precio-total">$0</p>
+            </div>
+            <button class="btn-pagar">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <!-- Ventana Modal para Detalles del Producto -->
+    <div id="modal-producto" class="modal">
+        <div class="modal-contenido" id="modal-detalle-contenido">
+             <span class="cerrar-modal" id="cerrar-detalle">&times;</span>
+            <!-- El detalle del producto se insertará aquí -->
+        </div>
+    </div>
+
+
+    <!-- Enlace al archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
