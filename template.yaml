@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: A sample CloudFormation template to create a public S3 bucket for hosting TheManozStore website.
+
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: !Sub 'themanozstore-bucket-${AWS::AccountId}-${AWS::Region}'
+      VersioningConfiguration:
+        Status: Enabled
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html # You can change this to a custom error page
+      Tags:
+        - Key: Project
+          Value: TheManozStore
+
+  S3BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref S3Bucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Sub 'arn:aws:s3:::${S3Bucket}/*'
+
+Outputs:
+  BucketName:
+    Description: 'Name of the S3 bucket created'
+    Value: !Ref S3Bucket
+  BucketARN:
+    Description: 'ARN of the S3 bucket created'
+    Value: !GetAtt S3Bucket.Arn
+  WebsiteURL:
+    Description: 'URL for the website hosted on S3'
+    Value: !GetAtt S3Bucket.WebsiteURL
